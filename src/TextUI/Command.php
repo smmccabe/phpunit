@@ -76,6 +76,7 @@ class Command
         'columns='                  => null,
         'configuration='            => null,
         'coverage-clover='          => null,
+        'coverage-cobertura='       => null,
         'coverage-crap4j='          => null,
         'coverage-html='            => null,
         'coverage-php='             => null,
@@ -328,6 +329,11 @@ class Command
                 case '--coverage-clover':
                     $this->arguments['coverageClover'] = $option[1];
 
+                    break;
+
+                case '--coverage-cobertura':
+                    $this->arguments['coverageCobertura'] = $option[1];
+    
                     break;
 
                 case '--coverage-crap4j':
@@ -1085,6 +1091,7 @@ Usage: phpunit [options] UnitTest [UnitTest.php]
 Code Coverage Options:
 
   --coverage-clover <file>    Generate code coverage report in Clover XML format
+  --coverage-cobertura <file> Generate code coverage report in Cobertura XML format
   --coverage-crap4j <file>    Generate code coverage report in Crap4J XML format
   --coverage-html <dir>       Generate code coverage report in HTML format
   --coverage-php <file>       Export PHP_CodeCoverage object to file

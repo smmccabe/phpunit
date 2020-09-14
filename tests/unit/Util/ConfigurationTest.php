@@ -323,6 +323,7 @@ class ConfigurationTest extends TestCase
                 'highLowerBound'                 => '90',
                 'coverage-html'                  => '/tmp/report',
                 'coverage-clover'                => '/tmp/clover.xml',
+                'coverage-cobertura'             => '/tmp/cobertura.xml',
                 'coverage-crap4j'                => '/tmp/crap4j.xml',
                 'crap4jThreshold'                => 50,
                 'coverage-text'                  => '/tmp/coverage.txt',

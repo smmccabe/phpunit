@@ -131,6 +131,7 @@ use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
  *   <logging>
  *     <log type="coverage-html" target="/tmp/report" lowUpperBound="50" highLowerBound="90"/>
  *     <log type="coverage-clover" target="/tmp/clover.xml"/>
+ *     <log type="coverage-cobertura" target="/tmp/cobertura.xml"/>
  *     <log type="coverage-crap4j" target="/tmp/crap.xml" threshold="30"/>
  *     <log type="plain" target="/tmp/logfile.txt"/>
  *     <log type="teamcity" target="/tmp/logfile.txt"/>

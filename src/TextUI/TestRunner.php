@@ -46,6 +46,7 @@ use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Exception as CodeCoverageException;
 use SebastianBergmann\CodeCoverage\Filter as CodeCoverageFilter;
 use SebastianBergmann\CodeCoverage\Report\Clover as CloverReport;
+use SebastianBergmann\CodeCoverage\Report\Cobertura as CoberturaReport;
 use SebastianBergmann\CodeCoverage\Report\Crap4j as Crap4jReport;
 use SebastianBergmann\CodeCoverage\Report\Html\Facade as HtmlReport;
 use SebastianBergmann\CodeCoverage\Report\PHP as PhpReport;
@@ -426,6 +427,10 @@ final class TestRunner extends BaseTestRunner
                 $codeCoverageReports++;
             }
 
+            if (isset($arguments['coverageCobertura'])) {
+                $codeCoverageReports++;
+            }
+
             if (isset($arguments['coverageCrap4J'])) {
                 $codeCoverageReports++;
             }
@@ -645,6 +650,21 @@ final class TestRunner extends BaseTestRunner
                 try {
                     $writer = new CloverReport;
                     $writer->process($codeCoverage, $arguments['coverageClover']);
+
+                    $this->codeCoverageGenerationSucceeded();
+
+                    unset($writer);
+                } catch (CodeCoverageException $e) {
+                    $this->codeCoverageGenerationFailed($e);
+                }
+            }
+
+            if (isset($arguments['coverageCobertura'])) {
+                $this->codeCoverageGenerationStart('Cobertura XML');
+
+                try {
+                    $writer = new CoberturaReport;
+                    $writer->process($codeCoverage, $arguments['coverageCobertura']);
 
                     $this->codeCoverageGenerationSucceeded();
 
@@ -1131,6 +1151,10 @@ final class TestRunner extends BaseTestRunner
 
             if (isset($loggingConfiguration['coverage-clover']) && !isset($arguments['coverageClover'])) {
                 $arguments['coverageClover'] = $loggingConfiguration['coverage-clover'];
+            }
+
+            if (isset($loggingConfiguration['coverage-cobertura']) && !isset($arguments['coverageCobertura'])) {
+                $arguments['coverageCobertura'] = $loggingConfiguration['coverage-cobertura'];
             }
 
             if (isset($loggingConfiguration['coverage-crap4j']) && !isset($arguments['coverageCrap4J'])) {

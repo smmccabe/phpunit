@@ -33,6 +33,7 @@
   <logging>
     <log type="coverage-html" target=""/>
     <log type="coverage-clover" target=""/>
+    <log type="coverage-cobertura" target=""/>
     <log type="json" target=""/>
     <log type="plain" target=""/>
     <log type="tap" target=""/>

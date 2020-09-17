@@ -75,6 +75,7 @@ class Command
         'columns='                  => null,
         'configuration='            => null,
         'coverage-clover='          => null,
+        'coverage-cobertura='       => null,
         'coverage-crap4j='          => null,
         'coverage-html='            => null,
         'coverage-php='             => null,
@@ -331,6 +332,11 @@ class Command
                 case '--coverage-clover':
                     $this->arguments['coverageClover'] = $option[1];
 
+                    break;
+
+                case '--coverage-cobertura':
+                    $this->arguments['coverageCobertura'] = $option[1];
+    
                     break;
 
                 case '--coverage-crap4j':
